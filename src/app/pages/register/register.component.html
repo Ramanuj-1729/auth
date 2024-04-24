@@ -1,0 +1,56 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" formControlName="email">
+                    <div *ngIf="f['email'].invalid && (f['email'].dirty || f['email'].touched)" class="text-danger">
+                        <div *ngIf="f['email'].errors?.['required']">Email is required</div>
+                        <div *ngIf="f['email'].errors?.['email']">Invalid email format</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="name" formControlName="name">
+                    <div *ngIf="f['name'].invalid && (f['name'].dirty || f['name'].touched)" class="text-danger">
+                        <div *ngIf="f['name'].errors?.['required']">Username is required</div>
+                        <div *ngIf="f['name'].errors?.['minlength']">Username must be at least 3 characters</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" formControlName="password">
+                    <div *ngIf="f['password'].invalid && (f['password'].dirty || f['password'].touched)"
+                        class="text-danger">
+                        <div *ngIf="f['password'].errors?.['required']">Password is required</div>
+                        <div *ngIf="f['password'].errors?.['minlength']">Password must be at least 6 characters</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="password2" class="form-label">Repeat Password</label>
+                    <input type="password" class="form-control" id="password2" formControlName="password2">
+                    <div *ngIf="f['password2'].invalid && (f['password2'].dirty || f['password2'].touched)"
+                        class="text-danger">
+                        <div *ngIf="f['password2'].errors?.['required']">Please confirm your password</div>
+                        <div *ngIf="f['password2'].errors?.['mismatch']">Passwords do not match</div>
+                    </div>
+                </div>
+                <div class="form-check mb-3">
+                    <input type="checkbox" class="form-check-input" id="tc"
+                        formControlName="tc">
+                    <label class="form-check-label" for="tc">I agree to the Terms and Conditions</label>
+                    <div *ngIf="f['tc'].invalid && (f['tc'].dirty || f['tc'].touched)"
+                        class="text-danger">
+                        <div *ngIf="f['tc'].errors?.['required']">You must agree to the Terms and Conditions
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mb-2"
+                    [disabled]="registrationForm.invalid">Register</button>
+                <p>Already have an account ? <a routerLink="/login">Login</a></p>
+            </form>
+
+        </div>
+    </div>
+</div>

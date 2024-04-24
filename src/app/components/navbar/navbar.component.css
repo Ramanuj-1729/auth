@@ -1,0 +1,8 @@
+.navbar-nav {
+    align-items: center;
+    /* Center items vertically */
+}
+
+.dropdown-header {
+    font-weight: bold;
+}
